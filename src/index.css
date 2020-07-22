@@ -14,6 +14,16 @@ code {
     monospace;
 }
 
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -37,15 +47,53 @@ ul {
   text-decoration: line-through;
 }
 
+.form--add {
+  margin-bottom: 1em;
+  border: 1px solid #e2e2e2;
+  /* padding: .7em .75em; */
+  /* box-shadow: 0 3px 5px 0px rgba(0,0,0,.3); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form--add input {
+  flex: 1 1 auto;
+  border: 0;
+  padding: .7em .75em;
+  font-size: 1em;
+  outline: none;
+}
+.form--add button {
+  padding: .7em .75em;
+  border-left: 1px solid #e2e2e2;
+  font-size: 18px;
+  border-radius: 0;
+}
+
 .btn {
   /* border: 1px solid rgba(0,0,0,.3); */
   border: 0;
   border-radius: .2em;
   outline: none;
   cursor: pointer;
+  background: transparent;
 }
 .btn--close {
   background: #fff;
   color: red;
   font-size: 1em;
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
