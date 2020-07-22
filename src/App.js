@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Todos from "./components/Todos";
+import AddTodo from "./components/AddTodo";
 
 function App() {
   const [todos, setTodos] = useState([
@@ -10,7 +11,7 @@ function App() {
 
   function onChange(id) {
     setTodos(
-      todos.map(todo => {
+      todos.map((todo) => {
         if (todo.id === id) {
           todo.completed = !todo.completed;
         }
@@ -19,14 +20,26 @@ function App() {
     );
   }
 
+  function onAdd(label) {
+    setTodos(
+      todos.concat([
+        {
+          id: Math.random(),
+          label: label,
+          completed: false,
+        },
+      ])
+    );
+  }
+
   function onRemove(id) {
-    setTodos(todos.filter(todo => todo.id !== id));
+    setTodos(todos.filter((todo) => todo.id !== id));
   }
 
   return (
     <div className="container">
-      <h1>TODO App</h1>
-
+      <h1 className="fadeIn">TODO App</h1>
+      <AddTodo onAdd={onAdd}/>
       <Todos items={todos} onChange={onChange} onRemove={onRemove} />
     </div>
   );
