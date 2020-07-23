@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Todo from "./Todo";
 
-function Todos({ items, onChange, onRemove }) {
+function Todos({ items, onChange, onRemove, changeLabel }) {
   return (
     <ul className="todo-list fadeIn" style={{ animationDelay: ".75s" }}>
       {items.length
@@ -11,6 +11,7 @@ function Todos({ items, onChange, onRemove }) {
               item={item}
               onChange={onChange}
               onRemove={onRemove}
+              changeLabel={changeLabel}
               index={index}
               key={item.id}
             />

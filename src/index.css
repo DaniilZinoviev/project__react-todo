@@ -46,7 +46,15 @@ ul {
 .todo-item.checked span {
   text-decoration: line-through;
 }
-
+.d-inline-block {
+  display: inline-block;
+}
+form input {
+  border: 0;
+  /* padding: .2em .75em; */
+  font-size: 1em;
+  outline: none;
+}
 .form--add {
   margin-bottom: 1em;
   border: 1px solid #e2e2e2;
@@ -58,10 +66,7 @@ ul {
 }
 .form--add input {
   flex: 1 1 auto;
-  border: 0;
   padding: .7em .75em;
-  font-size: 1em;
-  outline: none;
 }
 .form--add button {
   padding: .7em .75em;

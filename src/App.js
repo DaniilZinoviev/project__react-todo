@@ -32,6 +32,17 @@ function App() {
     );
   }
 
+  function changeLabel(id, newLabel) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          todo.label = newLabel;
+        }
+        return todo;
+      })
+    );
+  }
+
   function onRemove(id) {
     setTodos(todos.filter((todo) => todo.id !== id));
   }
@@ -40,7 +51,7 @@ function App() {
     <div className="container">
       <h1 className="fadeIn">TODO App</h1>
       <AddTodo onAdd={onAdd}/>
-      <Todos items={todos} onChange={onChange} onRemove={onRemove} />
+      <Todos items={todos} onChange={onChange} onRemove={onRemove} changeLabel={changeLabel} />
     </div>
   );
 }
