@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTimes, faCheck, faBan } from '@fortawesome/free-solid-svg-icons'
 
 function Todo({ item, onChange, onRemove, changeLabel, index }) {
   const [view, setView] = useState("default");
@@ -14,12 +14,16 @@ function Todo({ item, onChange, onRemove, changeLabel, index }) {
     setView("default");
   }
 
+  function clearEdit() {
+    setLabel(item.label);
+    setView("default");
+  }
+
   function onEdit() {
     if (view !== "edit") {
       setView("edit");
     } else {
-      setLabel(item.label);
-      setView("default");
+      clearEdit();
     }
   }
 
@@ -35,13 +39,30 @@ function Todo({ item, onChange, onRemove, changeLabel, index }) {
         />
 
         {view === "edit" ? (
-          <form onSubmit={(e) => handleLabel(e)} className="d-inline-block">
+          <form onSubmit={(e) => handleLabel(e)} className="d-inline-block form--edit">
             <input
               type="text"
               value={label}
               onChange={(e) => setLabel(e.target.value)}
               autoFocus={true}
             />
+
+          <button
+            className="btn color-green noselect"
+            title="Apply changes"
+            type="submit"
+          >
+            <FontAwesomeIcon icon={faCheck} />
+          </button>
+
+          <button
+            className="btn color-red noselect"
+            title="Deny changes"
+            onClick={(e) => clearEdit("default")}
+          >
+            <FontAwesomeIcon icon={faBan} />
+          </button>
+
           </form>
         ) : (
           <span>{item.label}</span>
@@ -54,15 +75,15 @@ function Todo({ item, onChange, onRemove, changeLabel, index }) {
           title="Edit todo"
           onClick={(e) => onEdit(item.id)}
         >
-          &#9998;
+          <FontAwesomeIcon icon={faEdit} />
         </button>
 
         <button
-          className="btn btn--close noselect"
+          className="btn btn--close color-red noselect"
           title="Remove todo"
           onClick={(e) => onRemove(item.id)}
         >
-          &#x2716;
+          <FontAwesomeIcon icon={faTimes} />
         </button>
       </div>
     </li>

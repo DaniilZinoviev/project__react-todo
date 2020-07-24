@@ -16,7 +16,7 @@ function Todos({ items, onChange, onRemove, changeLabel }) {
               key={item.id}
             />
           ))
-        : "There are no todos!"}
+        : <p>There are no todos!<span className="font-size-15">🤷‍♂️</span></p>}
     </ul>
   );
 }
